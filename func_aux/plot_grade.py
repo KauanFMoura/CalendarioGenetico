@@ -77,9 +77,8 @@ def salvar_grade(periodo_grade: int = None, bitarray: str = None):
                     "17h30"]
 
     horarios_intervalo = [f"{inicio} - {fim}" for inicio, fim in zip(horarios_inicio, horarios_fim)]
-    horarios_intervalo.insert(5, "Almoço")  # Insere na posição correta
+    horarios_intervalo.insert(5, "Almoço")  # Insere 'almoço' nos horarios 
 
-    # Dados para a tabela
     data = [[""] * 6 for _ in range(len(horarios_intervalo) + 1)]  # Inicializa com strings vazias
 
     # Preenche os cabeçalhos
@@ -95,7 +94,6 @@ def salvar_grade(periodo_grade: int = None, bitarray: str = None):
         for j in range(len(horarios_intervalo)):
             data[j + 1][i + 1] = calendario[i, j]
 
-    # Criando o PDF
     if periodo_grade is None:
         pdf_file = "output/grade_all.pdf"
     else:
