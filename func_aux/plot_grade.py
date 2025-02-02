@@ -103,15 +103,15 @@ def salvar_grade(periodo_grade: int = None, bitarray: str = None):
 
     tabela = Table(data)
     tabela.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.grey),  # Cabeçalho em cinza
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),  # Cor do texto do cabeçalho
-        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),  # Alinha o texto no centro
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),  # Fonte negrito para o cabeçalho
-        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),  # Padding inferior
-        ('GRID', (0, 0), (-1, -1), 1, colors.black),  # Linha de grade preta
-        ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),  # Fonte padrão para o conteúdo
-        ('FONTSIZE', (0, 0), (-1, -1), 10),  # Tamanho da fonte
-        ('TOPPADDING', (0, 0), (-1, -1), 5),  # Padding superior
+        ('BACKGROUND', (0, 0), (-1, 0), colors.grey), 
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),  
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),  
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),  
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),  
+        ('GRID', (0, 0), (-1, -1), 1, colors.black), 
+        ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'), 
+        ('FONTSIZE', (0, 0), (-1, -1), 10),  
+        ('TOPPADDING', (0, 0), (-1, -1), 5),  
     ]))
 
     pdf.build([tabela])
