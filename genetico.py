@@ -240,7 +240,7 @@ class Genetico:
                         else:
                             contagem_fill[key] = value
 
-                # Exibe o resultado
+                # Aplica as Penalizações
                 for i, contagem in enumerate([contagem_fill]):
                     for aula, duracao in contagem.items():
                         if duracao == 1:
