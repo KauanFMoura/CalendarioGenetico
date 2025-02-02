@@ -142,7 +142,7 @@ class Genetico:
             if horario in self.codigos_extras:  # se for um horario extra, trocar pelo horario normal
                 horario = self.codigos_extras[horario]
 
-            # AVALIACAO DE HORARIOS (-5 PONTOS POR HORARIO COM MAIS DE 3 DISCIPLINAS)
+            # AVALIACAO DE HORARIOS (-1 PONTOS POR HORARIO COM MAIS DE 3 DISCIPLINAS)
             # =======================================================================
             count_horarios[horario] = count_horarios.setdefault(horario, 0) + 1
             if count_horarios[horario] > 3:
@@ -159,14 +159,14 @@ class Genetico:
             aula = [disciplina, perido, professor, pre_requisito]
 
             dict_horarios[horario].append(aula)  # adiciona a aula ao horario
-        # AVALIACAO DE DISCIPLINAS (-20 POR DISICIPLINA A MAIS OU A MENOS, E -100 POR DISCIPLINA FALTANTE)
+        # AVALIACAO DE DISCIPLINAS (-100 POR DISICIPLINA A MAIS OU A MENOS, E -1000 POR DISCIPLINA FALTANTE)
         # =======================================================================
         for key, value in count_disciplinas.items():
             fitness -= 100 * abs(self.disciplinas[key][2] - value)  # disciplina a mais ou a menos, penalidade
 
         fitness -= 1000 * (abs(len(count_disciplinas) - self.total_aulas))  # disciplina faltante, penalidade
         # =======================================================================
-        # VERIFICAR SE EXISTEM DISCIPLINAS DO MESMO PERIODO/PRE-REQUISITOS/PROFESSORES EM HORARIOS IGUAIS (-20 PONTOS)
+        # VERIFICAR SE EXISTEM DISCIPLINAS DO MESMO PERIODO/PRE-REQUISITOS/PROFESSORES EM HORARIOS IGUAIS (-100 PONTOS)
         # =======================================================================
         for horarios, aulas in dict_horarios.items():
             total_aulas = len(aulas)  # total de aulas no horario
@@ -256,7 +256,7 @@ class Genetico:
         for key, value in dict_horarios.items():
             if key in self.horarios_manha:
                 for aula in value:
-                    if aula[0] == "10111":  # projeto Integrador inverte ao seu periodo
+                    if aula[0] == "10111":  # projeto Integrador inverso ao seu periodo
                         continue
 
                     if aula[1] % 2 != 0:
